@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai aur code </title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        // yha par innerHTML avialable content ko over-write kr rha h ......contin...
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("java")
+
+    // OR 
+    // More Optimize way 
+    
+    function addOptiLanguage(langName){
+        const li = document.createElement('li')
+        // ..... but yha par we are appending child by creating new node 
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("ruby")
+
+    // ---------------------------------------------------------------------------------
+
+    // Edit the value 
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Kafka"
+    // OR
+
+    const newli = document.createElement('li')
+    newli.textContent = "C sharp"
+    secondLang.replaceWith(newli)
+
+    // OR 
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+    
+    // Remove --- last child i.e ruby 
+
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>
