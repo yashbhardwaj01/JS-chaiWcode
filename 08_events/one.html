@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html events</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // OLD APPROACH --------
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+
+    //NEW APPROACH-----------
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log(e);
+        
+    // },false)
+
+    // OR --- old ways 👁️
+    // attachEvent()
+    // jQuery - on 
+
+// -------------------------------------------
+
+    //⭐🔥 EVENT PROPAGATION --> 🔴Bubbling ..here O/P is owl clicked then clicked inside the ul ------> bubbling is done from bottom to top as owl is small then ul 
+    // false is the default activity so usually we don't write it 
+    //     document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+        
+    // },false)
+
+    //     document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+        
+    // },false)
+
+// --------------------------------------
+
+    //⭐🔥 EVENT PROPAGATION --> 🔴Capturing ..here O/P is clicked inside the ul then owl clicked ------> capturing is done top to bottom as ul is larger then owl 
+    
+    //     document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+        
+    // },true)
+
+    //     document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+        
+    // },true)
+
+// ----------------------------------------
+    //  ⭐ to prevent event propagation -----> e.stopPropagation()
+
+    //     document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+        
+    // },false)
+
+    //     document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation()
+        
+    // },false)
+
+// -------------------------preventDefault --> if I don't want to visit any link like here google.com   ----------------------------
+
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     e.preventDefault()
+    // },false)
+
+//--------------------------- Removing images  ------------------------------
+
+    document.querySelector("#images").addEventListener('click', function(e){
+
+        if(e.target.tagName === 'IMG'){ // if i don't write this if statement then it will remove whole LI whenever i click on bullets of Li , so to remoe only IMG i write this 
+        let removeIt = e.target.parentNode
+        removeIt.remove()
+        }
+
+        // OR
+        // removeIt.parentNode.removeChild(removeIt) ----------complex 
+    }, false)
+
+</script>
+</body>
+</html>
